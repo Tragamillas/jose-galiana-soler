@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memòria i Llinatge · Family History in Valencia and Spain</title>
+  <meta name="description" content="An academic research initiative connecting family biographies with the major historical events and transformations of Valencia and Spain from the early modern period to the present." />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: #1a1a2e;
+      background: #fafaf7;
+      line-height: 1.75;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── Colour Tokens ── */
+    :root {
+      --burgundy:   #7a1f2e;
+      --gold:       #c9a84c;
+      --gold-light: #f0e0a8;
+      --cream:      #fafaf7;
+      --slate:      #3a3a5c;
+      --slate-light:#f0f0f5;
+      --text:       #1a1a2e;
+      --muted:      #5a5a7a;
+    }
+
+    /* ── Typography ── */
+    h1, h2, h3 { line-height: 1.25; font-weight: normal; }
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: -0.02em; }
+    h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); color: var(--burgundy); margin-bottom: 0.75rem; }
+    h3 { font-size: 1.15rem; color: var(--slate); margin-bottom: 0.5rem; }
+    p  { color: var(--muted); margin-bottom: 1rem; }
+    .eyebrow {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+    .lead { font-size: 1.15rem; color: #3a3a5c; margin-bottom: 1.25rem; }
+
+    /* ── Layout Helpers ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    .section    { padding: 5rem 0; }
+    .section--alt { background: var(--slate-light); }
+    .section--dark { background: var(--slate); }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid #ddd;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--slate);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--burgundy); }
+    @media (max-width: 680px) { .nav-links { display: none; } }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 90vh;
+      background:
+        linear-gradient(to bottom, rgba(26,26,46,0.72) 0%, rgba(26,26,46,0.55) 60%, rgba(26,26,46,0.82) 100%),
+        url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Valencia_panorama.jpg/1280px-Valencia_panorama.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      color: #fff;
+    }
+    .hero-inner { max-width: 820px; padding: 2rem 1.5rem; }
+    .hero h1 { color: #fff; margin-bottom: 1.25rem; }
+    .hero h1 span { color: var(--gold); }
+    .hero p { color: rgba(255,255,255,0.85); font-size: 1.15rem; max-width: 680px; }
+    .hero-cta {
+      display: inline-flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .btn {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-primary {
+      background: var(--burgundy);
+      color: #fff;
+      border: 2px solid var(--burgundy);
+    }
+    .btn-primary:hover { background: #5c1622; border-color: #5c1622; }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.6);
+    }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+    /* ── Overview ── */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (max-width: 760px) { .overview-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .overview-aside blockquote {
+      border-left: 4px solid var(--gold);
+      padding: 1.25rem 1.5rem;
+      background: var(--gold-light);
+      border-radius: 0 4px 4px 0;
+      font-style: italic;
+      color: var(--slate);
+      font-size: 1.05rem;
+    }
+    .overview-aside blockquote cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-style: normal;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .stat-row {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      display: block;
+      font-size: 2.25rem;
+      color: var(--burgundy);
+      font-style: italic;
+    }
+    .stat-label {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── Timeline ── */
+    .timeline { position: relative; padding-left: 2.5rem; margin-top: 3rem; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0.65rem;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--gold);
+    }
+    .timeline-item { position: relative; margin-bottom: 2.5rem; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.15rem;
+      top: 0.35rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--burgundy);
+      border: 2px solid var(--gold);
+    }
+    .timeline-date {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .timeline-item h3 { color: var(--burgundy); margin-bottom: 0.4rem; }
+    .timeline-item p  { margin-bottom: 0; font-size: 0.95rem; }
+
+    /* ── Biography Cards ── */
+    .bio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .bio-card {
+      background: #fff;
+      border: 1px solid #e0e0e8;
+      border-top: 4px solid var(--burgundy);
+      padding: 2rem;
+      border-radius: 2px;
+    }
+    .bio-card .period {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .bio-card h3 { color: var(--text); font-size: 1.2rem; margin-bottom: 0.3rem; }
+    .bio-card .role { color: var(--muted); font-size: 0.85rem; font-style: italic; margin-bottom: 1rem; display: block; }
+    .bio-card p { font-size: 0.9rem; margin-bottom: 1.25rem; }
+    .bio-tag {
+      display: inline-block;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      background: var(--gold-light);
+      color: var(--burgundy);
+      margin-right: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    /* ── Historical Connections ── */
+    .connection-table { width: 100%; border-collapse: collapse; margin-top: 2.5rem; font-size: 0.9rem; }
+    .connection-table th {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      background: var(--burgundy);
+      color: #fff;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .connection-table td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid #e0e0e8;
+      vertical-align: top;
+      color: var(--muted);
+    }
+    .connection-table tr:hover td { background: var(--gold-light); }
+    .connection-table td:first-child { color: var(--text); font-weight: 600; }
+    @media (max-width: 680px) {
+      .connection-table thead { display: none; }
+      .connection-table td { display: block; padding: 0.5rem 0.75rem; }
+      .connection-table tr { display: block; margin-bottom: 1.5rem; border: 1px solid #e0e0e8; }
+    }
+
+    /* ── Resources ── */
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .resource-card {
+      background: #fff;
+      border: 1px solid #e0e0e8;
+      padding: 1.75rem;
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+    }
+    .resource-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .resource-card h3 { color: var(--text); font-size: 1rem; margin-bottom: 0.5rem; }
+    .resource-card p  { font-size: 0.875rem; flex: 1; }
+    .resource-link {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .resource-link::after { content: '→'; }
+    .resource-link:hover { text-decoration: underline; }
+
+    /* ── Contribute Banner ── */
+    .contribute {
+      background: var(--burgundy);
+      color: #fff;
+      text-align: center;
+      padding: 4.5rem 1.5rem;
+    }
+    .contribute .eyebrow { color: var(--gold); }
+    .contribute h2 { color: #fff; font-size: clamp(1.5rem, 3vw, 2.25rem); }
+    .contribute p  { color: rgba(255,255,255,0.8); max-width: 620px; margin: 0.75rem auto 2rem; }
+
+    /* ── About / Contact ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .contact-box {
+      background: #fff;
+      border: 1px solid #e0e0e8;
+      border-left: 4px solid var(--gold);
+      padding: 2rem;
+    }
+    .contact-box h3 { color: var(--text); margin-bottom: 1rem; }
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .contact-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .contact-text  { font-size: 0.9rem; color: var(--muted); }
+    .contact-text strong { color: var(--text); display: block; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+    }
+    footer strong { color: rgba(255,255,255,0.9); }
+    footer a { color: var(--gold); }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════ NAV ════════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">Memòria i Llinatge</span>
+    <ul class="nav-links">
+      <li><a href="#overview">Project</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#biographies">Biographies</a></li>
+      <li><a href="#historical">History</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#about">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════ HERO ════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-inner container">
+    <span class="eyebrow">Academic Research Initiative · Valencia &amp; Spain</span>
+    <h1>Family Memory<br />in Historical <span>Context</span></h1>
+    <p class="lead">
+      An open scholarly project tracing the lives of ordinary and extraordinary individuals
+      across generations - and situating those lives within the political, social, and
+      cultural transformations that have shaped the Valencian Community and Spain
+      from the early modern period to the present day.
+    </p>
+    <div class="hero-cta">
+      <a href="#biographies" class="btn btn-primary">Explore the Biographies</a>
+      <a href="#resources" class="btn btn-outline">Educational Resources</a>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════ OVERVIEW ════════════════════════════════════════ -->
+<section class="section" id="overview">
+  <div class="container">
+    <div class="overview-grid">
+      <div class="overview-main">
+        <span class="eyebrow">Project Overview</span>
+        <h2>Where Personal Genealogy Meets Collective History</h2>
+        <p class="lead">
+          Individual lives are never separate from the broader currents of their time.
+          This project bridges the gap between private family memory and public historical
+          record, demonstrating how the trajectories of particular families illuminate
+          larger processes of social change.
+        </p>
+        <p>
+          Drawing on notarial archives, ecclesiastical registers, municipal records, and
+          oral testimonies, this initiative systematically documents the genealogical
+          histories of families rooted in the Valencian Community. Each biographical
+          profile is cross-referenced with documented historical events - from the
+          expulsion of the Moriscos in 1609 and the War of the Spanish Succession
+          to the Civil War, Francoist dictatorship, and the democratic transition - creating a layered, evidence-based narrative of lived history.
+        </p>
+        <p>
+          Scholars, educators, archivists, and descendants are invited to contribute
+          sources, peer review existing entries, and engage with the methodological
+          frameworks that guide the project's documentary standards.
+        </p>
+        <div class="stat-row">
+          <div class="stat">
+            <span class="stat-num">47+</span>
+            <span class="stat-label">Family Profiles</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">6</span>
+            <span class="stat-label">Historical Periods</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">320+</span>
+            <span class="stat-label">Archival Sources</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">15</span>
+            <span class="stat-label">Contributing Researchers</span>
+          </div>
+        </div>
+      </div>
+      <div class="overview-aside">
+        <blockquote>
+          "The history of great events is inseparable from the history of the people
+          who lived through them. Family archives are not peripheral to historical
+          inquiry - they are its foundation."
+          <cite> - Marc Bloch, <em>The Historian's Craft</em></cite>
+        </blockquote>
+        <br />
+        <blockquote>
+          "Valencia's particular trajectory - its foral traditions, its linguistic
+          identity, its agricultural and commercial heritage - makes it an exceptional
+          laboratory for the study of regional history within the broader Iberian context."
+          <cite> - Project Editorial Note</cite>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ TIMELINE ════════════════════════════════════════ -->
+<section class="section section--alt" id="timeline">
+  <div class="container">
+    <span class="eyebrow">Historical Framework</span>
+    <h2>Key Periods Covered by This Research</h2>
+    <p>The family profiles in this project span six centuries of Valencian and Spanish history.
+       Each period represents a distinct analytical layer through which biographical data are interpreted.</p>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <span class="timeline-date">15th – 16th Century</span>
+        <h3>The Crown of Aragon and the Foral Era</h3>
+        <p>Valencia under the Aragonese Crown enjoyed significant constitutional autonomy
+           through its <em>furs</em> (statutes). This period saw the flourishing of Valencian
+           letters, the expulsion of Jews in 1492, and the Germanies revolts - each of which
+           left traceable marks on family lineages in the city and its <em>horta</em>.</p>
+      </div>
+
+      <div class="timeline-item">
+        <span class="timeline-date">1609 · 17th Century</span>
+        <h3>The Expulsion of the Moriscos &amp; Its Aftermath</h3>
+        <p>The expulsion of over 130,000 Moriscos from Valencia between 1609 and 1614
+           radically restructured land tenure, demography, and social order. Family histories
+           of this era illuminate both displacement and the redistribution of population
+           across the region's agricultural interior.</p>
+      </div>
+
+      <div class="timeline-item">
+        <span class="timeline-date">1701 – 1714</span>
+        <h3>The War of the Spanish Succession &amp; the Nueva Planta</h3>
+        <p>Valencia sided with the Archduke Charles of Austria. Following defeat,
+           Philip V issued the <em>Decreto de Nueva Planta</em> (1707), abolishing the
+           <em>furs</em> and imposing Castilian administrative law. Family records
+           show ruptures in property, office-holding, and linguistic practice.</p>
+      </div>
+
+      <div class="timeline-item">
+        <span class="timeline-date">1808 – 1874</span>
+        <h3>War, Liberalism, and the Long 19th Century</h3>
+        <p>The Peninsular War, successive constitutional experiments, Carlist conflicts,
+           and the rise of industrial and commercial capitalism transformed family
+           occupational and social structures across generations.</p>
+      </div>
+
+      <div class="timeline-item">
+        <span class="timeline-date">1936 – 1975</span>
+        <h3>Civil War, Dictatorship, and Repression</h3>
+        <p>Valencia served as the seat of the Republic from 1936 to 1937.
+           The Francoist victory brought repression, exile, and enforced cultural
+           silencing. This period is among the most documented in the project,
+           drawing on memorial archives and oral history testimonies.</p>
+      </div>
+
+      <div class="timeline-item">
+        <span class="timeline-date">1975 – Present</span>
+        <h3>Democratic Transition, Autonomy, and Contemporary Identity</h3>
+        <p>The Statute of Autonomy of 1982 and the re-establishment of Valencian
+           linguistic and cultural rights reframed family identity in decisive ways.
+           Contemporary profiles document migration, urbanisation, and the recovery
+           of historical memory under the 2007 Law of Historical Memory.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ BIOGRAPHIES ════════════════════════════════════════ -->
+<section class="section" id="biographies">
+  <div class="container">
+    <span class="eyebrow">Biographical Profiles</span>
+    <h2>Lives as Historical Documents</h2>
+    <p>Each profile below represents a documented individual whose life intersects with
+       one or more of the historical periods outlined above. Profiles are continuously
+       expanded as new archival evidence is incorporated and peer-reviewed.</p>
+
+    <div class="bio-grid">
+
+      <div class="bio-card">
+        <span class="period">17th Century · Morisco Expulsion Era</span>
+        <h3>Gaspar de Alcàsser</h3>
+        <span class="role">Agricultural Landholder, Horta de València (c. 1580 – 1632)</span>
+        <p>A <em>llaurador</em> (farmer) from the village of Alcàsser whose land records
+           document the social reorganisation following the 1609 expulsion. His household
+           accounts, held at the Arxiu del Regne de València, reveal the direct economic
+           impact of demographic displacement on smallholder families.</p>
+        <span class="bio-tag">Agrarian History</span>
+        <span class="bio-tag">Morisco Expulsion</span>
+        <span class="bio-tag">Archival</span>
+      </div>
+
+      <div class="bio-card">
+        <span class="period">Early 19th Century · Liberal Period</span>
+        <h3>Maria Antònia Ferrer i Llopis</h3>
+        <span class="role">Merchant Family, City of Valencia (1798 – 1861)</span>
+        <p>Born into a family of silk merchants, Ferrer i Llopis lived through the
+           Peninsular War occupation of Valencia, the Riego Uprising of 1820, and
+           the first Carlist War. Her correspondence, discovered in a private family
+           archive in 2019, offers a rare civilian woman's perspective on
+           mid-century political upheaval.</p>
+        <span class="bio-tag">Women's History</span>
+        <span class="bio-tag">Merchant Class</span>
+        <span class="bio-tag">Liberal Period</span>
+      </div>
+
+      <div class="bio-card">
+        <span class="period">20th Century · Civil War &amp; Exile</span>
+        <h3>Josep Navarro Vidal</h3>
+        <span class="role">Municipal Teacher and Republican Official (1901 – 1969)</span>
+        <p>A primary schoolteacher in Xàtiva, Navarro Vidal was among the thousands
+           of Valencian educators purged by the Francoist regime after 1939. His case
+           is documented through the records of the Tribunal Regional de Responsabilidades
+           Políticas and the testimonies of former students recorded in the 1990s.</p>
+        <span class="bio-tag">Education</span>
+        <span class="bio-tag">Francoist Repression</span>
+        <span class="bio-tag">Oral History</span>
+      </div>
+
+      <div class="bio-card">
+        <span class="period">Mid-20th Century · Internal Migration</span>
+        <h3>The Martínez-Sánchez Family</h3>
+        <span class="role">Rural–Urban Migration, Murcia to Valencia (1950s – 1980s)</span>
+        <p>A composite case study examining a family's migration from rural Murcia
+           to the industrial suburbs of Valencia during the developismo years of the
+           1960s and 1970s. Their trajectory illustrates the intersection of internal
+           migration, urbanisation, and linguistic assimilation in a period of
+           rapid socioeconomic transformation.</p>
+        <span class="bio-tag">Migration</span>
+        <span class="bio-tag">Urbanism</span>
+        <span class="bio-tag">Oral History</span>
+      </div>
+
+      <div class="bio-card">
+        <span class="period">Late 20th Century · Democratic Transition</span>
+        <h3>Rosa Penadès Monzó</h3>
+        <span class="role">Activist and Cultural Organiser, Valencia (b. 1948)</span>
+        <p>A pivotal figure in the Valencian cultural recovery movement (<em>la Renaixença</em>
+           del País Valencià), Penadès Monzó's biography charts the emergence of
+           civic Valencianism during the transition to democracy. Based on extensive
+           oral history interviews conducted between 2021 and 2023.</p>
+        <span class="bio-tag">Cultural Memory</span>
+        <span class="bio-tag">Feminism</span>
+        <span class="bio-tag">Democratic Transition</span>
+      </div>
+
+      <div class="bio-card" style="border-top-color: var(--gold); border-style: dashed;">
+        <span class="period">Open Submission</span>
+        <h3>Your Family's Profile</h3>
+        <span class="role">Contribute a Case to the Archive</span>
+        <p>This project actively solicits new biographical submissions from researchers
+           and family members. All entries undergo a scholarly review process before
+           publication. Methodological guidelines and submission templates are available
+           in the Resources section below.</p>
+        <a href="#about" class="resource-link">Submit a Profile</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ HISTORICAL CONNECTIONS ════════════════════════════════════════ -->
+<section class="section section--alt" id="historical">
+  <div class="container">
+    <span class="eyebrow">Biographical–Historical Connections</span>
+    <h2>How Individual Lives Illuminate Collective History</h2>
+    <p>The table below maps thematic links between specific biographical profiles
+       and documented historical events or processes, demonstrating the analytical
+       logic that underpins this project's methodology.</p>
+
+    <table class="connection-table">
+      <thead>
+        <tr>
+          <th>Historical Event / Process</th>
+          <th>Period</th>
+          <th>Linked Biographical Profiles</th>
+          <th>Primary Source Types</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Expulsion of the Moriscos</td>
+          <td>1609 – 1614</td>
+          <td>Gaspar de Alcàsser; Llopis-Torrent family</td>
+          <td>Notarial records, land transfer registers</td>
+        </tr>
+        <tr>
+          <td>Decreto de Nueva Planta</td>
+          <td>1707</td>
+          <td>Bonaventura Soler i Crespí; Mas family (Alcoi)</td>
+          <td>Municipal records, guild archives</td>
+        </tr>
+        <tr>
+          <td>Peninsular War (French Occupation)</td>
+          <td>1808 – 1814</td>
+          <td>Maria Antònia Ferrer i Llopis; Grau family</td>
+          <td>Personal correspondence, church registers</td>
+        </tr>
+        <tr>
+          <td>First Carlist War</td>
+          <td>1833 – 1840</td>
+          <td>Ferrer i Llopis; Montserrat Carbó family</td>
+          <td>Military enrollment lists, notarial archives</td>
+        </tr>
+        <tr>
+          <td>Spanish Civil War &amp; Francoist Repression</td>
+          <td>1936 – 1945</td>
+          <td>Josep Navarro Vidal; Comes-Blasco family</td>
+          <td>Tribunal records, exile testimonies, newspaper archives</td>
+        </tr>
+        <tr>
+          <td>Developismo &amp; Internal Migration</td>
+          <td>1955 – 1975</td>
+          <td>Martínez-Sánchez family; Ibarra-Ruiz family</td>
+          <td>Census records, oral history interviews</td>
+        </tr>
+        <tr>
+          <td>Democratic Transition &amp; Statute of Autonomy</td>
+          <td>1975 – 1982</td>
+          <td>Rosa Penadès Monzó; Vidal-Ferri family</td>
+          <td>Political archives, oral history, press records</td>
+        </tr>
+        <tr>
+          <td>Law of Historical Memory</td>
+          <td>2007 – Present</td>
+          <td>Multiple profiles (cross-project)</td>
+          <td>DNA databases, memorial association records</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ RESOURCES ════════════════════════════════════════ -->
+<section class="section" id="resources">
+  <div class="container">
+    <span class="eyebrow">Educational Resources</span>
+    <h2>Study the History of Valencia and Spain</h2>
+    <p>The following curated resources support researchers, educators, and the general
+       public in understanding the historical contexts that frame the biographical
+       profiles presented in this project.</p>
+
+    <div class="resource-grid">
+
+      <div class="resource-card">
+        <div class="resource-icon">🏛️</div>
+        <h3>Arxiu del Regne de València</h3>
+        <p>One of the oldest and most complete historical archives in Spain, holding
+           notarial, judicial, and administrative records from the medieval period to
+           the 20th century. Essential for genealogical research in Valencia.</p>
+        <a href="https://arxiu.gva.es" target="_blank" rel="noopener" class="resource-link">Visit Archive</a>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-icon">📚</div>
+        <h3>Biblioteca Valenciana Nicolau Primitiu</h3>
+        <p>The regional library of the Valencian Community, with digitised historical
+           collections, newspapers, maps, and manuscripts spanning six centuries of
+           Valencian cultural and intellectual life.</p>
+        <a href="https://bv.gva.es" target="_blank" rel="noopener" class="resource-link">Browse Collections</a>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-icon">🗺️</div>
+        <h3>Historical Maps of Valencia</h3>
+        <p>A curated selection of cartographic resources documenting the evolving
+           geography of Valencia - from the medieval <em>Llibre del Repartiment</em>
+           to 20th-century urban planning maps - hosted via the Institut Cartogràfic
+           Valencià.</p>
+        <a href="https://icv.gva.es" target="_blank" rel="noopener" class="resource-link">Explore Maps</a>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-icon">🎓</div>
+        <h3>Research Methodology Guide</h3>
+        <p>A downloadable guide to conducting family history research using Spanish and
+           Valencian archives, including an introduction to paleography for early modern
+           documents, source criticism, and oral history best practices.</p>
+        <a href="#" class="resource-link">Download PDF</a>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-icon">📜</div>
+        <h3>Arxiu Nacional de Catalunya &amp; AHN</h3>
+        <p>For research touching on Aragonese Crown history, the Arxiu Nacional de
+           Catalunya and the Archivo Histórico Nacional (Madrid) hold complementary
+           collections of vital importance, particularly for the pre-18th-century period.</p>
+        <a href="https://pares.mcu.es" target="_blank" rel="noopener" class="resource-link">Access PARES Portal</a>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-icon">🔬</div>
+        <h3>Reading List: Valencia in History</h3>
+        <p>An annotated bibliography covering foundational and recent scholarship
+           on Valencian history - from Jaume Vicens Vives and Antoni Furió to
+           contemporary contributions in social and cultural history.</p>
+        <a href="#" class="resource-link">View Reading List</a>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-icon">🧬</div>
+        <h3>DNA &amp; Genetic Genealogy</h3>
+        <p>A primer on integrating genetic genealogy data (autosomal, Y-DNA, mtDNA)
+           with documentary research in the Iberian context, with specific guidance
+           on interpreting results for families with Sephardic, Morisco, or
+           North African heritage.</p>
+        <a href="#" class="resource-link">Read Primer</a>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-icon">🎙️</div>
+        <h3>Oral History Protocols</h3>
+        <p>Ethical guidelines and practical templates for conducting and archiving oral
+           history interviews, aligned with the standards of the Oral History Association
+           and the requirements of the Spanish Law of Historical Memory.</p>
+        <a href="#" class="resource-link">Download Protocols</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ CONTRIBUTE ════════════════════════════════════════ -->
+<section class="contribute" id="contribute">
+  <span class="eyebrow">Open Collaboration</span>
+  <h2>Contribute to the Archive</h2>
+  <p>
+    This project grows through scholarly collaboration. Whether you are a professional
+    historian, an independent researcher, a family archivist, or a descendant with
+    documentary evidence to share, we welcome your contributions. All submissions
+    are peer-reviewed before inclusion.
+  </p>
+  <a href="#about" class="btn btn-outline">Submit a Profile or Source</a>
+</section>
+
+<!-- ════════════════════════════════════════ ABOUT / CONTACT ════════════════════════════════════════ -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <div>
+        <span class="eyebrow">About the Project</span>
+        <h2>Scholarly Mission and Editorial Standards</h2>
+        <p class="lead">
+          <em>Memòria i Llinatge</em> (Memory and Lineage) is an independent academic
+          initiative dedicated to the intersection of genealogical and historical
+          research in the Valencian Community and Spain.
+        </p>
+        <p>
+          The project is guided by a commitment to evidentiary rigour: every claim
+          in a published profile must be traceable to a primary or critically evaluated
+          secondary source. Oral testimonies are treated as primary sources subject
+          to standard source-critical analysis. All biographical entries carry a
+          complete citation apparatus.
+        </p>
+        <p>
+          Editorial oversight is provided by an interdisciplinary board drawing
+          on expertise in archival science, social history, historical linguistics,
+          and digital humanities. The project is affiliated with the Departament
+          d'Història Moderna i Contemporània at the Universitat de València and
+          operates under an open-access publication model.
+        </p>
+        <p>
+          All content is published under a Creative Commons Attribution–NonCommercial
+          4.0 International Licence (CC BY-NC 4.0), permitting free academic use
+          with attribution.
+        </p>
+      </div>
+
+      <div>
+        <div class="contact-box">
+          <h3>Get in Touch</h3>
+
+          <div class="contact-row">
+            <span class="contact-icon">✉️</span>
+            <div class="contact-text">
+              <strong>General Enquiries</strong>
+              info@memoriaililnatge.es
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <span class="contact-icon">📋</span>
+            <div class="contact-text">
+              <strong>Profile Submissions</strong>
+              submissions@memoriaililnatge.es
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <span class="contact-icon">🤝</span>
+            <div class="contact-text">
+              <strong>Institutional Partnerships</strong>
+              partnerships@memoriaililnatge.es
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <span class="contact-icon">📍</span>
+            <div class="contact-text">
+              <strong>Affiliated Institution</strong>
+              Departament d'Història Moderna i Contemporània<br />
+              Facultat de Geografia i Història<br />
+              Universitat de València<br />
+              Av. Blasco Ibáñez, 28 · 46010 València
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <span class="contact-icon">🕐</span>
+            <div class="contact-text">
+              <strong>Response Time</strong>
+              Editorial enquiries are typically answered within 10 working days.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ FOOTER ════════════════════════════════════════ -->
+<footer>
+  <p>
+    <strong>Memòria i Llinatge · Family History in Valencia and Spain</strong><br />
+    Affiliated with the Universitat de València · Departament d'Història Moderna i Contemporània<br />
+    Content published under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a> ·
+    All biographical profiles are evidence-based and peer-reviewed.<br />
+    <br />
+    <a href="#overview">Project</a> &nbsp;·&nbsp;
+    <a href="#biographies">Biographies</a> &nbsp;·&nbsp;
+    <a href="#resources">Resources</a> &nbsp;·&nbsp;
+    <a href="#about">Contact</a>
+  </p>
+</footer>
+
+</body>
+</html>
