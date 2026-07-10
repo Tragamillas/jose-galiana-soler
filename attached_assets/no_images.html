@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>José E. Galiana Soler — Una vida llena de amor a Valencia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper: #eee6d3;
+  --paper-2: #e3d8bd;
+  --paper-deep: #d9cba6;
+  --ink: #2a231c;
+  --ink-soft: #5c4f3f;
+  --ink-faint: #8a7a63;
+  --teal: #35655c;
+  --teal-deep: #234942;
+  --red: #8c3a2b;
+  --line: #b9a97e;
+  --paper-rgb: 238,230,211;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Serif 4', Georgia, serif;
+  font-size:17px;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+}
+
+::selection{background:var(--teal); color:var(--paper);}
+
+/* texture */
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  pointer-events:none;
+  z-index:2000;
+  opacity:.05;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.4) 0, rgba(0,0,0,.4) 1px, transparent 1px, transparent 3px);
+  mix-blend-mode:multiply;
+}
+
+a{color:var(--teal-deep);}
+
+h1,h2,h3{
+  font-family:'Fraunces', Georgia, serif;
+  font-weight:600;
+  color:var(--ink);
+  margin:0;
+}
+
+.eyebrow{
+  font-family:'Special Elite', 'Courier New', monospace;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-size:.72rem;
+  color:var(--red);
+}
+
+/* ---------- Layout shell ---------- */
+.page{
+  display:grid;
+  grid-template-columns: 240px 1fr;
+}
+@media (max-width: 900px){
+  .page{grid-template-columns: 1fr;}
+}
+
+/* ---------- Nav ---------- */
+.sidenav{
+  position:sticky; top:0; align-self:start; height:100vh;
+  border-right:1px solid var(--line);
+  padding:2rem 1.4rem;
+  display:flex; flex-direction:column; gap:.15rem;
+  background:linear-gradient(180deg, var(--paper-2), var(--paper));
+  overflow-y:auto;
+}
+@media (max-width: 900px){
+  .sidenav{position:relative; height:auto; border-right:none; border-bottom:1px solid var(--line);
+    flex-direction:row; flex-wrap:wrap; gap:.3rem 1rem; padding:1rem 1.2rem;}
+}
+.sidenav .brand{
+  font-family:'Fraunces', serif;
+  font-weight:700;
+  font-size:1.05rem;
+  margin-bottom:1.1rem;
+  color:var(--ink);
+  border-bottom:1px solid var(--line);
+  padding-bottom:.9rem;
+}
+@media (max-width:900px){ .sidenav .brand{width:100%; margin-bottom:.4rem;} }
+.sidenav a{
+  font-family:'Special Elite','Courier New', monospace;
+  font-size:.76rem;
+  letter-spacing:.03em;
+  text-decoration:none;
+  color:var(--ink-soft);
+  padding:.32rem 0;
+  border-left:2px solid transparent;
+  padding-left:.6rem;
+  transition:color .2s, border-color .2s;
+}
+.sidenav a:hover{ color:var(--red); border-left-color:var(--red); }
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  min-height:78vh;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center;
+  padding:4rem 1.5rem;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(140,58,43,.10), transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(53,101,92,.14), transparent 55%),
+    var(--paper);
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute; inset:0;
+  background-image: url('[BASE64_IMAGE]
+  background-size:340px auto;
+  background-repeat:no-repeat;
+  background-position: 102% 100%;
+  opacity:.16;
+  filter:sepia(1) contrast(1.05);
+  pointer-events:none;
+}
+.hero-inner{ position:relative; z-index:2; max-width:680px; }
+.hero .eyebrow{ display:block; margin-bottom:1.1rem;}
+.hero h1{
+  font-size:clamp(2.6rem, 7vw, 4.6rem);
+  line-height:1.02;
+  letter-spacing:-.01em;
+}
+.hero .subtitle{
+  font-family:'Fraunces', serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(1.05rem, 2.4vw, 1.35rem);
+  color:var(--ink-soft);
+  margin-top:1.1rem;
+  max-width:520px; margin-inline:auto;
+}
+.hero .author{
+  margin-top:1.6rem;
+  font-family:'Special Elite','Courier New',monospace;
+  font-size:.78rem;
+  letter-spacing:.06em;
+  color:var(--ink-faint);
+}
+.hero .author::before{content:"— "; }
+
+/* ---------- Content sections ---------- */
+.content{
+  padding:4.2rem clamp(1.4rem, 6vw, 6rem);
+  max-width:860px;
+}
+.content.alt{ background:rgba(217,203,166,.35); }
+
+.content h2{
+  display:flex; align-items:baseline; gap:1rem;
+  font-size:clamp(1.5rem, 3vw, 1.9rem);
+  margin-bottom:1.6rem;
+  padding-bottom:.9rem;
+  border-bottom:1px solid var(--line);
+}
+.content h2 .num{
+  font-family:'Special Elite','Courier New',monospace;
+  font-size:.85rem;
+  color:var(--red);
+  border:1px solid var(--red);
+  padding:.15rem .5rem;
+  line-height:1;
+  border-radius:2px;
+  flex-shrink:0;
+}
+
+.content p{ margin:0 0 1.15rem; color:var(--ink); }
+.content em{ color:var(--teal-deep); font-style:italic; }
+
+blockquote{
+  margin:1.8rem 0;
+  padding:.2rem 0 .2rem 1.4rem;
+  border-left:3px solid var(--teal);
+  font-family:'Fraunces', serif;
+  font-style:italic;
+  color:var(--ink-soft);
+  font-size:1.02rem;
+}
+blockquote p{ margin:0 0 .5rem; color:var(--ink-soft); }
+blockquote cite{
+  display:block;
+  font-family:'Special Elite','Courier New',monospace;
+  font-style:normal;
+  font-size:.7rem;
+  letter-spacing:.02em;
+  color:var(--ink-faint);
+}
+
+/* ---------- Figures ---------- */
+.fig{
+  margin:2rem 0 2.2rem;
+  background:var(--paper-2);
+  border:1px solid var(--line);
+  padding:.7rem .7rem 0;
+  box-shadow: 0 6px 18px -10px rgba(0,0,0,.35);
+  position:relative;
+}
+.fig::before{
+  content:"";
+  position:absolute; top:-8px; left:22px;
+  width:46px; height:16px;
+  background:rgba(140,58,43,.28);
+  transform:rotate(-3deg);
+}
+.fig img{
+  display:block; width:100%; height:auto;
+  filter:sepia(.18) contrast(1.02);
+  border:1px solid var(--paper-deep);
+}
+.fig figcaption{
+  font-family:'Special Elite','Courier New',monospace;
+  font-size:.72rem;
+  line-height:1.5;
+  color:var(--ink-soft);
+  padding:.7rem .2rem .9rem;
+  letter-spacing:.01em;
+}
+
+footer{
+  padding:3rem clamp(1.4rem,6vw,6rem) 4rem;
+  border-top:1px solid var(--line);
+  font-family:'Special Elite','Courier New',monospace;
+  font-size:.72rem;
+  color:var(--ink-faint);
+  max-width:860px;
+}
+footer p{margin:0 0 .5rem;}
+
+/* fade-in on scroll */
+.content, .hero-inner{
+  animation:fadeUp .7s ease both;
+}
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(14px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* ---------- Didactic components ---------- */
+.tag-didactico{
+  display:inline-block;
+  font-family:'Special Elite','Courier New',monospace;
+  font-size:.68rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--teal-deep);
+  background:rgba(53,101,92,.12);
+  border:1px solid var(--teal);
+  padding:.2rem .6rem;
+  border-radius:2px;
+  margin-bottom:1.1rem;
+}
+
+.facetas-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(210px,1fr));
+  gap:1rem;
+  margin:1.8rem 0 .5rem;
+}
+.faceta-card{
+  background:var(--paper-2);
+  border:1px solid var(--line);
+  padding:1rem 1.1rem 1.1rem;
+  box-shadow:0 4px 12px -8px rgba(0,0,0,.3);
+}
+.faceta-card .num{
+  font-family:'Special Elite','Courier New',monospace;
+  font-size:.68rem;
+  color:var(--red);
+}
+.faceta-card h3{
+  font-family:'Fraunces', serif;
+  font-size:1.02rem;
+  font-weight:600;
+  margin:.35rem 0 .45rem;
+  color:var(--ink);
+}
+.faceta-card p{
+  font-size:.85rem;
+  line-height:1.5;
+  color:var(--ink-soft);
+  margin:0;
+}
+
+.objetivos{
+  list-style:none;
+  margin:1.4rem 0;
+  padding:0;
+  display:grid;
+  gap:.55rem;
+}
+.objetivos li{
+  padding-left:1.6rem;
+  position:relative;
+  color:var(--ink);
+}
+.objetivos li::before{
+  content:"—";
+  position:absolute; left:0;
+  color:var(--red);
+}
+
+.timeline{
+  list-style:none;
+  margin:1.8rem 0;
+  padding:0;
+  border-left:2px solid var(--line);
+}
+.timeline li{
+  position:relative;
+  padding:0 0 1.5rem 1.5rem;
+}
+.timeline li::before{
+  content:"";
+  position:absolute;
+  left:-6.5px; top:.3rem;
+  width:11px; height:11px;
+  border-radius:50%;
+  background:var(--paper);
+  border:2px solid var(--red);
+}
+.timeline .year{
+  font-family:'Special Elite','Courier New',monospace;
+  font-size:.78rem;
+  color:var(--red);
+  display:block;
+  margin-bottom:.15rem;
+}
+.timeline .event{
+  color:var(--ink);
+  font-size:.92rem;
+}
+
+.pensar{
+  margin:2rem 0;
+  background:rgba(140,58,43,.07);
+  border:1px solid rgba(140,58,43,.35);
+  border-left:4px solid var(--red);
+  padding:1rem 1.3rem;
+}
+.pensar .eyebrow{ margin-bottom:.5rem; display:block; }
+.pensar ul{ margin:.4rem 0 0; padding-left:1.2rem; }
+.pensar li{ margin-bottom:.4rem; color:var(--ink); font-size:.94rem; }
+
+.glosario{
+  margin:1.6rem 0;
+  display:grid;
+  gap:1.1rem;
+}
+.glosario dt{
+  font-family:'Fraunces', serif;
+  font-weight:600;
+  color:var(--teal-deep);
+  font-size:.98rem;
+}
+.glosario dd{
+  margin:.25rem 0 0;
+  color:var(--ink-soft);
+  font-size:.9rem;
+  line-height:1.55;
+}
+
+.actividades{
+  margin:1.4rem 0;
+  padding:0;
+  list-style:none;
+  counter-reset:act;
+  display:grid;
+  gap:1rem;
+}
+.actividades li{
+  counter-increment:act;
+  padding-left:2.4rem;
+  position:relative;
+  color:var(--ink);
+}
+.actividades li::before{
+  content:counter(act);
+  position:absolute; left:0; top:-.1rem;
+  width:1.7rem; height:1.7rem;
+  border:1px solid var(--red);
+  color:var(--red);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Special Elite','Courier New',monospace;
+  font-size:.78rem;
+}
+
+@media (max-width:900px){
+  .facetas-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:520px){
+  .facetas-grid{grid-template-columns:1fr;}
+}
+
+</style>
+</head>
+<body>
+<div class="page">
+  <nav class="sidenav">
+    <div class="brand">J. E. Galiana Soler<br><span style="font-size:.7rem; font-weight:400; color:var(--ink-faint);">Archivo biográfico</span></div>
+    <a href="#inicio">Inicio</a>
+<a href="#presentacion">Para el alumnado</a>
+<a href="#cronologia">Cronología</a>
+<a href="#origenes">Orígenes</a>
+<a href="#juventud">Juventud</a>
+<a href="#catedral">La Catedral</a>
+<a href="#viajes">Viajes</a>
+<a href="#proyectos-catedral">La Basílica</a>
+<a href="#escritor">Escritor</a>
+<a href="#urbanismo">Urbanismo</a>
+<a href="#turismo">Turismo</a>
+<a href="#vida-social">Vida social</a>
+<a href="#mecenas">Mecenas</a>
+<a href="#vida-privada">Vida privada</a>
+<a href="#ultimos-anos">Legado</a>
+<a href="#glosario">Glosario</a>
+<a href="#aula">Para el aula</a>
+  </nav>
+  <main>
+    
+<section id="inicio" class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Biografía · Valencia, 1894–1966</p>
+    <h1>José E. Galiana Soler</h1>
+    <p class="subtitle">Una vida llena de amor a Valencia a través de su obra gráfica y literaria</p>
+    <p class="author">por José Luis Galiana Puchades</p>
+  </div>
+</section>
+
+
+<section id="presentacion" class="content">
+  <span class="tag-didactico">Recurso para el aula · Historia de Valencia</span>
+  <h2><span class="num">·</span> Una figura para conocer la Valencia del siglo XX</h2>
+  <p>José Enrique Galiana Soler (Valencia, 1894–1966) es un personaje poco conocido fuera del ámbito familiar y, sin embargo, resulta muy revelador para entender la Valencia de la primera mitad del siglo XX: cómo se debatía el urbanismo en torno a la Catedral, cómo nació el turismo moderno en la ciudad, y cómo un funcionario "de a pie" podía dedicar su vida entera, de forma desinteresada, a defender el patrimonio de su tierra.</p>
+  <p>Este sitio reúne su biografía a partir de documentos, dibujos y postales de archivo familiar, y añade herramientas pensadas para el alumnado: una cronología, cajas de reflexión en varias secciones, un glosario de términos históricos y una propuesta de actividades para el aula (apartado <a href="#aula">Para el aula</a>).</p>
+
+  <div class="facetas-grid">
+    <div class="faceta-card">
+      <span class="num">01</span>
+      <h3>Miembro de la familia Galiana</h3>
+      <p>Heredero de una saga de la pequeña burguesía valenciana vinculada al arte, el derecho y la arquitectura.</p>
+    </div>
+    <div class="faceta-card">
+      <span class="num">02</span>
+      <h3>Dibujante apasionado</h3>
+      <p>Cultivó el dibujo desde joven, dejando decenas de bocetos, apuntes del natural y láminas de temática valenciana.</p>
+    </div>
+    <div class="faceta-card">
+      <span class="num">03</span>
+      <h3>Aparejador del Catastro</h3>
+      <p>Ejerció como funcionario técnico del catastro urbano, primero en Teruel y después en Valencia.</p>
+    </div>
+    <div class="faceta-card">
+      <span class="num">04</span>
+      <h3>Escritor sobre arte valenciano</h3>
+      <p>Publicó artículos y folletos sobre monumentos y arte de Valencia y Teruel en numerosas cabeceras.</p>
+    </div>
+    <div class="faceta-card">
+      <span class="num">05</span>
+      <h3>Defensor del patrimonio</h3>
+      <p>Elaboró proyectos y propuestas para la Catedral, la Basílica de la Virgen y el trazado urbano histórico.</p>
+    </div>
+    <div class="faceta-card">
+      <span class="num">06</span>
+      <h3>Editor de <em>Valencia Atracción</em></h3>
+      <p>Redactor jefe de la revista de la Sociedad Valenciana para el Fomento del Turismo desde 1926.</p>
+    </div>
+    <div class="faceta-card">
+      <span class="num">07</span>
+      <h3>Impulsor del turismo</h3>
+      <p>Creador de la marca "Ciudad de las flores" y autor de la Guía del turista en Valencia (1929).</p>
+    </div>
+    <div class="faceta-card">
+      <span class="num">08</span>
+      <h3>Amante de las bellas artes</h3>
+      <p>Mecenas y coleccionista: donó obras y objetos a los museos de Cerámica, Prehistoria y al Ayuntamiento.</p>
+    </div>
+  </div>
+
+  <p style="margin-top:1.6rem;"><strong>Qué vas a aprender recorriendo este sitio:</strong></p>
+  <ul class="objetivos">
+    <li>A relacionar la trayectoria de una persona concreta con procesos históricos más amplios: la transformación urbana de Valencia, el nacimiento del turismo moderno y la defensa del patrimonio en el siglo XX.</li>
+    <li>A identificar y contrastar fuentes primarias (dibujos, postales, folletos, expedientes municipales) usadas para reconstruir una biografía.</li>
+    <li>A situar en su contexto histórico conceptos como catastro, aparejador, mecenazgo o sociedad de fomento del turismo.</li>
+    <li>A valorar el papel de figuras "menores" —no siempre recogidas en los libros de texto— en la construcción de la identidad cultural de una ciudad.</li>
+  </ul>
+</section>
+
+
+<section id="cronologia" class="content alt">
+  <span class="tag-didactico">Línea de tiempo</span>
+  <h2><span class="num">·</span> Cronología esencial</h2>
+  <ul class="timeline">
+    <li><span class="year">1894</span><span class="event">Nace en Valencia, el 24 de mayo, en el seno de una familia de la pequeña burguesía.</span></li>
+    <li><span class="year">1913–1914</span><span class="event">Primeras obras plásticas conocidas: "La Cenicienta" y sus apuntes de la Dama de Elche y de la Catedral.</span></li>
+    <li><span class="year">1918</span><span class="event">Obtiene plaza de aparejador en el catastro urbano; sus primeros destinos son en Teruel.</span></li>
+    <li><span class="year">1922–1929</span><span class="event">Redacta sucesivos proyectos de ampliación de la Basílica de la Virgen de los Desamparados.</span></li>
+    <li><span class="year">1925</span><span class="event">Elabora el "Proyecto de gran plaza de la Glorieta" para la reforma urbanística de Valencia.</span></li>
+    <li><span class="year">1926</span><span class="event">Se incorpora como redactor jefe de la revista <em>Valencia Atracción</em>, de la Sociedad Valenciana para el Fomento del Turismo.</span></li>
+    <li><span class="year">1929</span><span class="event">Acuña la marca "Ciudad de las flores" y publica la <em>Guía del turista en Valencia</em>, declarada oficial por el Ayuntamiento.</span></li>
+    <li><span class="year">Años 60</span><span class="event">Realiza donaciones al Museo de Cerámica, al Museo de Prehistoria y, en 1966, veinte cuadros de la familia al Ayuntamiento (Colección Galiana Soler).</span></li>
+    <li><span class="year">1966</span><span class="event">Fallece en Valencia. Su funeral reúne a numerosas personalidades de la vida valenciana, entre ellas el alcalde Rincón de Arellano.</span></li>
+  </ul>
+</section>
+
+
+<section id="origenes" class="content">
+  <h2><span class="num">01</span> Orígenes y familia</h2>
+  <p>Nació en Valencia un 24 de mayo de 1894, en el seno de una cultivada familia de la pequeña burguesía. Durante su vida fue aparejador, escritor, dibujante, coleccionista, promotor turístico e investigador amante del arte y la historia.</p>
+  <p>De su madre, Enriqueta, heredó las dotes como dibujante. Su padre, José Luis, que era abogado, le mostró las habilidades para el arte de escribir. El matrimonio aparece retratado en la siguiente fotografía.</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Enriqueta y José Luis, padres de José E. Galiana" loading="lazy">
+        <figcaption>El matrimonio formado por Enriqueta y José Luis, padres de José E. Galiana Soler.</figcaption>
+      </figure>
+  <p>Además, el abuelo paterno, Salvador, había sido maestro de obras, y así prosiguió el camino de la arquitectura. Por la otra rama, su abuelo materno, Antonio, le transmitió el amor a Valencia y al arte. Y su abuela materna, Vicenta, le dejó las vivencias de Picaña y los recuerdos de la sombrerería sita en la calle de la Abadía de San Martín.</p>
+</section>
+
+
+<section id="juventud" class="content alt">
+  <h2><span class="num">02</span> Formación y primeras obras</h2>
+  <p>Realizó estudios en el Instituto Luis Vives y estudió Arquitectura Técnica en la Universidad de Valencia. Entre sus obras plásticas de juventud destaca <em>"La Cenicienta"</em>, un dibujo al carbón del año 1913.</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="La Cenicienta, dibujo al carbón, 1913" loading="lazy">
+        <figcaption>“La Cenicienta”, dibujo al carbón, 1913.</figcaption>
+      </figure>
+  <p><em>"Un secuestrado"</em>, dibujo a pluma, copia de una obra de Mariano Fortuny.</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Un secuestrado, dibujo a pluma" loading="lazy">
+        <figcaption>“Un secuestrado”, dibujo a pluma, copia de Mariano Fortuny.</figcaption>
+      </figure>
+  <p>En la parte inferior de una de sus láminas, la Dama de Elche —escultura capital de la civilización ibérica— en un apunte realizado por José E. Galiana en 1914.</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Apunte de la Dama de Elche, 1914" loading="lazy">
+        <figcaption>Apunte de la Dama de Elche, realizado por José E. Galiana en 1914.</figcaption>
+      </figure>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Retrato de José E. Galiana a los 28 años" loading="lazy">
+        <figcaption>José E. Galiana retratado a los 28 años (T. Prawdzik, Valencia, 1922).</figcaption>
+      </figure>
+</section>
+
+
+<section id="catedral" class="content">
+  <h2><span class="num">03</span> El entorno catedralicio</h2>
+  <p>Estuvo centrado en el entorno catedralicio durante su vida. Prueba de ello son los diseños y propuestas para este espacio urbano plasmados en distintos proyectos que se sucedieron durante cuatro décadas. Podemos conocer sus actividades plásticas gracias a la colección de láminas de la Biblioteca Valenciana.</p>
+  <p>En 1914, José Enrique había cumplido 20 años y ofrece un repertorio creativo particularmente fructífero. Realiza, por una parte, un estudio de la catedral con la "Planta del Templo Metropolitano", delineado en marzo. A esto se añade un proyecto de actuación urbanística en este ámbito espacial, diseñado en septiembre de 1914.</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Planta del Templo Metropolitano, 1914" loading="lazy">
+        <figcaption>“Planta del Templo Metropolitano”, delineado en marzo de 1914.</figcaption>
+      </figure>
+  <blockquote>
+    <p>Un dibujo que trataba de prefigurar —en perspectiva— la actual plaza de la Reina. Por su calidad, verosimilitud y alcance, la propuesta urbanística implícita en el proyecto interpretaba las trazas definidas por F. Aymami en su Plano general de reforma interior de la ciudad de Valencia, aprobado por real orden de 21 de agosto de 1911.</p>
+    <cite>Piñón, J. L. “Cuando Valencia quiso imitar a Napoleón III”, Levante: el Mercantil Valenciano, 24 dic. 1989.</cite>
+  </blockquote>
+  <p>Se ha señalado que este proyecto de reforma urbana guardaba ciertas concomitancias con las intervenciones propiciadas por Napoleón III, perdiendo el efecto barroco de sorpresa a favor de una idea de fondo con perspectiva clasicista. A principios del siglo XX, la antigua trama urbana de la Plaza de la Reina era completamente distinta: la puerta barroca de la catedral se descubría entonces a través de la calle de Zaragoza.</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Proyecto de Reforma de la Plaza de la Reina" loading="lazy">
+        <figcaption>Postal “Valencia. Proyecto de Reforma de la Plaza de la Reina”.</figcaption>
+      </figure>
+  <div class="pensar">
+    <span class="eyebrow">Para pensar</span>
+    <ul>
+      <li>¿Por qué crees que a comienzos del siglo XX se planteaban reformas urbanas inspiradas en modelos como el de París (Napoleón III)? ¿Qué se buscaba conseguir en las ciudades españolas de la época?</li>
+      <li>Compara el plano de la Plaza de la Reina de 1914 con su aspecto actual. ¿Qué elementos del proyecto original reconoces y cuáles no se llegaron a construir?</li>
+    </ul>
+  </div>
+</section>
+
+
+<section id="viajes" class="content alt">
+  <h2><span class="num">04</span> Viajes de juventud y primeros destinos</h2>
+  <p>Durante aquellos años de juventud realiza unos dibujos que son testimonio de un viaje veraniego al Monasterio de El Escorial, en julio de 1916: la fachada principal, la iglesia y la planta general.</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Monasterio de El Escorial" loading="lazy">
+        <figcaption>Monasterio de El Escorial, dibujo de julio de 1916.</figcaption>
+      </figure>
+  <p>En mayo de 1918 obtuvo una plaza de aparejador en el catastro urbano. Fueron sus inicios como funcionario del catastro, y su destino laboral estuvo en Teruel. Durante aquel verano de 1922 dibujó en Chelva la "Fachada y campanario de la Iglesia Parroquial".</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Fachada y campanario de iglesia, boceto" loading="lazy">
+        <figcaption>Boceto de fachada y campanario de una iglesia, realizado durante sus años como aparejador del catastro.</figcaption>
+      </figure>
+  <p>De su paso por las tierras turolenses queda una tarjeta postal: "Calle Mayor de Albarracín, 1924".</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Calle Mayor de Albarracín, 1924" loading="lazy">
+        <figcaption>Tarjeta postal “Calle Mayor de Albarracín, 1924”.</figcaption>
+      </figure>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Vista de una calle de Albarracín" loading="lazy">
+        <figcaption>Otra vista de una calle de Albarracín.</figcaption>
+      </figure>
+</section>
+
+
+<section id="proyectos-catedral" class="content">
+  <h2><span class="num">05</span> Bocetos y proyectos para la Catedral y la Basílica</h2>
+  <p>Ese mismo año estuvo realizando bocetos de la "Catedral Metropolitana, portada gótica y cimborio", en octubre de 1922.</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Catedral Metropolitana, portada gótica y cimborio" loading="lazy">
+        <figcaption>Boceto de la Catedral Metropolitana, portada gótica y cimborio, octubre de 1922.</figcaption>
+      </figure>
+  <p>Uno de sus proyectos más conocidos fue la ampliación de la Basílica de los Desamparados hacia el sur, sobre los solares de la Almoina. Se conservan tarjetas postales que recrean esa ampliación de la Capilla.</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Anteproyecto de Basílica para Ntra. Sra. de los Desamparados" loading="lazy">
+        <figcaption>“Valencia. Ante-proyecto de Basílica para Ntra. Sra. de los Desamparados”, autor José E. Galiana.</figcaption>
+      </figure>
+  <p>Entre estos proyectos para la reforma de la Basílica de la Virgen se conservan dos bocetos fechados entre 1922 y 1924.</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Boceto de reforma de la Basílica de la Virgen" loading="lazy">
+        <figcaption>Boceto de reforma de la Basílica de la Virgen, 1922.</figcaption>
+      </figure>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Segundo boceto de reforma de la Basílica de la Virgen" loading="lazy">
+        <figcaption>Segundo boceto de reforma de la Basílica de la Virgen, 1924.</figcaption>
+      </figure>
+  <blockquote>
+    <p>Una nueva idea, ésta de José E. Galiana, era partidaria de ampliar la Capilla hacia el sur, sobre los solares de la Almoina. En 1925, la junta general de la Antigua y Real Cofradía acordó llevar a la práctica el proyecto de Basílica. En 1927 la Cofradía había reunido tres millones de pesetas —toda una fortuna— para su construcción.</p>
+  </blockquote>
+  <p>En 1929, el arquitecto Juan Guardiola redactó un proyecto de Basílica capaz de albergar a 150.000 personas. Otro proyecto lo elaboró el arquitecto Eduardo Burgos Bosch, y un tercero, ese mismo año, lo presentó José E. Galiana Soler. Se sumaron colaboraciones como la de Mariano Benlliure. Se abrió concurso público a comienzos de 1931, con diez anteproyectos presentados, que ganó el arquitecto castellonense Vicente Traver Tomás. El 14 de abril fue proclamada la República y todos los proyectos quedaron paralizados.</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Planta de ampliación de la Basílica, mayo de 1929" loading="lazy">
+        <figcaption>Segundo proyecto gráfico de José E. Galiana para ampliar la Basílica de la Virgen: planta, mayo de 1929.</figcaption>
+      </figure>
+  <blockquote>
+    <p>Vino la guerra civil y la posguerra, y hasta 1975 no volvería a moverse el viejísimo deseo de ampliar la Basílica. El 7 de mayo, el Ayuntamiento firmó las escrituras de compra y las expropiaciones para ampliar la plaza. En los años 80 aparecieron los restos arqueológicos de la Almoina y se paralizó todo: ya nunca más se construiría el templo.</p>
+  </blockquote>
+  <p>En la actualidad, ese espacio está habilitado como museo arqueológico, confirmando las hipótesis sobre la ubicación de la Valencia romana que defendía el historiador Julián San Valero Aparisi en los años sesenta.</p>
+</section>
+
+
+<section id="escritor" class="content alt">
+  <h2><span class="num">06</span> El escritor y divulgador</h2>
+  <p>José E. Galiana escribió numerosos artículos de prensa sobre el arte de las provincias de Teruel y Valencia. Su trabajo en el catastro le ocupaba las mañanas, y por las tardes se entregaba a su pasión por la escritura. Colaboró con las revistas <em>Construcción Arquitectónica</em>, <em>Germania</em>, <em>Valencia Atracción</em>, <em>La Voz Valenciana</em>, <em>Gaceta del Viajero</em>, <em>La Voz del Comercio</em>, <em>Sucrona</em>, <em>Pensat i Fet</em> y <em>La Semana Gráfica</em>.</p>
+  <p>Entre sus publicaciones destaca la <em>Guía descriptiva de la Lonja de Valencia</em> (Tipo-Litografía y Relieves de Estanislao Machi, 1922), con una segunda edición ampliada en 1930.</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Portada de la guía de la Lonja, El Arte en Valencia" loading="lazy">
+        <figcaption>Portada de una de sus publicaciones sobre el arte de Valencia.</figcaption>
+      </figure>
+  <p>Otro folleto a destacar versa sobre <em>El Palacio Municipal de la Exposición</em> (Imprenta Valderrobres, 1923).</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="El Palacio Municipal de la Exposición" loading="lazy">
+        <figcaption>El Palacio Municipal de la Exposición, ilustración de José E. Galiana, 1923.</figcaption>
+      </figure>
+  <div class="pensar">
+    <span class="eyebrow">Para pensar</span>
+    <ul>
+      <li>Galiana compaginaba su trabajo de aparejador por las mañanas con la escritura por las tardes. ¿Qué nos dice esto sobre cómo se ejercía la divulgación cultural antes de que existieran los medios de comunicación actuales?</li>
+      <li>Busca en qué consistía cada una de las revistas para las que escribió. ¿Qué tipo de público leía este tipo de publicaciones en los años veinte y treinta?</li>
+    </ul>
+  </div>
+</section>
+
+
+<section id="urbanismo" class="content">
+  <h2><span class="num">07</span> Proyectos urbanísticos para Valencia</h2>
+  <p>Entre sus propuestas para la reforma de la ciudad de Valencia se conserva el "Proyecto de gran plaza de la Glorieta", de diciembre de 1925.</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Proyecto de gran plaza de la Glorieta" loading="lazy">
+        <figcaption>Ilustración del plan urbanístico “Proyecto de gran plaza de la Glorieta”, diciembre de 1925.</figcaption>
+      </figure>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Croquis planimétrico de la reforma de la Glorieta" loading="lazy">
+        <figcaption>Croquis planimétrico de la reforma radical de la Glorieta para dar lugar a una gran plaza.</figcaption>
+      </figure>
+</section>
+
+
+<section id="turismo" class="content alt">
+  <h2><span class="num">08</span> Redactor jefe y promotor turístico</h2>
+  <p>Su afición por la escritura, unida a su espíritu apasionado por la cultura valenciana, le involucró plenamente en la labor de difusión de la revista <em>Valencia Atracción</em>, en la que actuaba como redactor jefe. Esta publicación fue el órgano de la Sociedad Valenciana para el Fomento del Turismo, entidad fundada en 1919 por Manuel Feliu, el conde Trenor y otros intelectuales. Fue en septiembre de 1926 cuando la SVFT plasmó sus iniciativas en la revista, con el objetivo de servir de propaganda y guía para visitantes y excursionistas.</p>
+  <p>Gracias a los esfuerzos de José E. Galiana, José Sanchis Sivera, Teodoro Llorente, Carlos Sarthou Carreres y José Rico de Estasen —a los que pronto se sumaron Maximiliano Thous, Carles Salvador, Francesc Almela i Vives y Emili Beüt i Berenguer— la promoción de la imagen turística de Valencia consiguió pronto apoyos institucionales del Ayuntamiento.</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Revista Valencia Atracción" loading="lazy">
+        <figcaption>La revista Valencia Atracción, órgano de la Sociedad Valenciana para el Fomento del Turismo.</figcaption>
+      </figure>
+  <p>La primera marca turística oficial de Valencia pasa por ser la acuñada por José E. Galiana en 1929: <em>"Ciudad de las flores"</em>, arropada con símbolos costumbristas —el escudo de la ciudad, la Senyera, la figura de Jaume I— producto de una marketización que recurría a atributos vinculados a la herencia del siglo XIX.</p>
+  <p>En este contexto aparece su obra más conocida, la <em>"Guía del turista en Valencia"</em>, reconocida como oficial de la ciudad por el Ayuntamiento en 1929. Su propósito era contribuir a que desapareciera la incomprensible ignorancia que hasta entonces se había tenido de Valencia desde el punto de vista turístico. Constituyó un referente para el visitante por el amplio corpus de información que contenía: fiestas, costumbres, itinerarios turísticos y recursos culturales.</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Guía del turista en Valencia" loading="lazy">
+        <figcaption>Portada de la “Guía del turista en Valencia”, obra más conocida de José E. Galiana.</figcaption>
+      </figure>
+  <p>Hay que destacar el compromiso y el afecto del autor, ya que José Enrique fue quien, desinteresadamente, publicó la guía, erigiéndose en un ejemplo de ciudadano tal y como refleja su prologuista, Don José Candela, presidente de la Sociedad de Fomento del Turismo en aquellos años.</p>
+  <div class="pensar">
+    <span class="eyebrow">Para pensar</span>
+    <ul>
+      <li>¿Qué elementos escogió Galiana para representar Valencia como "Ciudad de las flores" (escudo, Senyera, Jaume I)? ¿Qué tipo de imagen de la ciudad se quería transmitir a los visitantes?</li>
+      <li>Compara esta primera marca turística de 1929 con la imagen que hoy se da de Valencia a los turistas. ¿Qué ha cambiado y qué se mantiene?</li>
+      <li>¿Por qué crees que instituciones como el Ayuntamiento decidieron apoyar económicamente estas iniciativas de promoción turística?</li>
+    </ul>
+  </div>
+</section>
+
+
+<section id="vida-social" class="content">
+  <h2><span class="num">09</span> Vida social y amor por Valencia</h2>
+  <p>Enamorado de Valencia, frecuentaba el Ateneo, el Círculo de Bellas Artes y Lo Rat Penat. Su personalidad se erigió en una figura de su época a través de numerosos artículos de estudio y difusión del patrimonio cultural y monumental.</p>
+  <p>Disfrutó de un viaje a Italia, del que queda esta tarjeta postal: "Torre románica en el trayecto Pisa-Roma", apunte del natural desde el tren, 1934.</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Torre románica, apunte desde el tren, Pisa-Roma, 1934" loading="lazy">
+        <figcaption>“Torre románica en el trayecto Pisa-Roma”: apunte del natural desde el tren, 1934.</figcaption>
+      </figure>
+  <p>En mayo de 1936 recreó en una lámina "Dos aspectos de la plaza de la Fuente Villar del Arzobispo".</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Dos aspectos de la plaza de la Fuente, Villar del Arzobispo" loading="lazy">
+        <figcaption>“Dos aspectos de la plaza de la Fuente”, Villar del Arzobispo, mayo de 1936.</figcaption>
+      </figure>
+  <p>Tras la Guerra Civil, retomó el proyecto de remodelación de la Plaza de la Reina con algunas modificaciones: "Un segundo proyecto gráfico de la plaza de la Reina", detalle, mayo de 1948.</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Segundo proyecto de la Plaza de la Reina, 1948" loading="lazy">
+        <figcaption>“Un segundo proyecto gráfico de la Plaza de la Reina”. Detalle, mayo de 1948.</figcaption>
+      </figure>
+  <p>En 1963 prosigue con la idea de un Miguelete coronado por un pináculo, en un boceto para la terminación del "Micalet".</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Boceto para la terminación del Micalet, 1963" loading="lazy">
+        <figcaption>Boceto para la terminación del “Micalet”, 1963.</figcaption>
+      </figure>
+</section>
+
+
+<section id="mecenas" class="content alt">
+  <h2><span class="num">10</span> Mecenas y coleccionista</h2>
+  <p>Fue mecenas de arte y amigo de González Martí. En los años sesenta realizó varias donaciones al Museo de Cerámica: barajas de naipes, cajas de cerillas con imágenes del Quijote, un cuadro con retrato de niña y un dibujo a plumilla sobre papel, algunos de ellos dedicados. Su trabajo en el catastro le puso en contacto con la cerámica, y su interés por la conservación de este legado coincidió con el de muchos intelectuales de su época.</p>
+  <p>A esto hay que añadir la donación realizada al Museo de Prehistoria de Valencia: ocho croquis originales del arquitecto Muguruza sobre la restauración ideal de diversos monumentos romanos de la ciudad de Sagunto.</p>
+  <p>El caso más señalado fue la donación de veinte cuadros de la familia al Ayuntamiento de Valencia, que solo comunicó a su hermano Luis durante la celebración de las bodas de plata de este, en el Club Náutico. Aquella noticia causó sorpresa entre los comensales, ya que se trataba de patrimonio familiar: cuadros reunidos gracias a las buenas relaciones que su abuelo materno, Antonio Soler, mantuvo con los pintores de sus tertulias, en su mayoría retratos de la familia Soler Moreno.</p>
+  <blockquote>
+    <p>Vecino de Valencia y enamorado de su patria, por cuya cultura ha venido colaborando toda su vida atentamente: que siguiendo la huella de otras personalidades y continuando sus propias donaciones en libros y elementos decorativos... aparte del afecto hacia la ciudad de su cuna que supuso la "Guía del Turista Valenciano"...</p>
+    <cite>Del expediente de la donación Galiana Soler, Ayuntamiento de Valencia.</cite>
+  </blockquote>
+  <p>Esta donación se denominó Colección Galiana Soler y se conserva en el Museo de la Ciudad. La forman obras de Joaquín Agrasot, Daniel Cortina, José Genovés Llansol, Vicente Castells, Miguel Parra, Juan Peiró, Manuel Jiménez Aranda, José Roger y Agustín Almar, además de unas tablas anónimas de los siglos XV, XVI y XVII. La noticia se publicó en varios diarios a finales de octubre de 1966, entre ellos el ABC del 22 de octubre.</p>
+  <div class="pensar">
+    <span class="eyebrow">Para pensar</span>
+    <ul>
+      <li>¿Qué diferencia hay entre "coleccionar" y "hacer mecenazgo"? ¿En qué acciones de Galiana ves cada una de estas dos actitudes?</li>
+      <li>¿Por qué crees que decidió donar el patrimonio familiar a instituciones públicas en lugar de conservarlo para su familia?</li>
+    </ul>
+  </div>
+</section>
+
+
+<section id="vida-privada" class="content">
+  <h2><span class="num">11</span> Vida privada y carácter</h2>
+  <p>Durante su juventud, José Enrique se enamoró, aunque tuvo mala fortuna: su novia murió desangrada a consecuencia de una operación de amigdalitis. Posteriormente lo quisieron casar con otra persona, pero él no quiso, y faltando pocas semanas para el enlace, su hermano Luis tuvo que devolver los regalos de boda.</p>
+  <p>Su familia residía en la Gran Vía Marqués del Turia nº 36, en la vivienda que llamaban "la casa de los pajaritos". Trabajó muchos años como aparejador junto a José Cort Botí, arquitecto del catastro. Según el testimonio de Ana Cort Climent: no presumía de su descreimiento religioso, pero tampoco lo ocultaba, aunque muchas tardes acudía a la Basílica a rendir pleitesía a la Mare de Déu, por quien sentía un amor de locura —el mismo que sentía por todo lo valenciano. Su bilingüismo era perfecto, tenía buena cultura, y sus amistades pertenecían, como él, a Lo Rat Penat.</p>
+  <p>Le gustaba hablar en valenciano, en unos años en que socialmente estaba mal visto usar la lengua vernácula, debido a la idiosincrasia impuesta por el régimen franquista. Era republicano y antimonárquico, y su relación con su nuera Emilia, defensora del régimen imperante, no fue siempre afortunada.</p>
+  <p>Tenía un carácter abierto y sociable, muy distinto al de su hermano Luis, hombre austero y de pocas palabras. Con el paso de los años, la relación con su sobrino José Luis y su esposa María Vicenta creció y se hizo entrañable; a José Enrique aquella jovencita le recordaba a su añorada hermana Vicenta.</p>
+  <p>A su muerte, dejó la herencia en su totalidad a su sobrino José Luis, quien la rechazó por respeto a la familia y se la entregó a su padre Luis. Con los años, la herencia volvió finalmente al hogar de su sobrino.</p>
+</section>
+
+
+<section id="ultimos-anos" class="content alt">
+  <h2><span class="num">12</span> Últimos años y legado</h2>
+  <p>En sus últimos años fue cuidado gracias a las relaciones que había cultivado toda su vida: Josefina, que había limpiado en su casa durante años, y su marido Vicente, que perdió la vista y acabó viviendo en la casa de los pajaritos haciéndole compañía. Tras la muerte de ambos, el marido de su hija Pepita, cocinero en el restaurante Navarro, le cuidaba por las noches.</p>
+  <p>José Enrique Galiana Soler acabó siendo un personaje peculiar y querido dentro de la sociedad valenciana, y tuvo un gran reconocimiento en su funeral, al que acudió, entre muchas otras personas, su amigo el alcalde de Valencia, Rincón de Arellano.</p>
+  
+      <figure class="fig">
+        <img src="[BASE64_IMAGE]" alt="Fotografía familiar" loading="lazy">
+        <figcaption>Fotografía de una celebración familiar.</figcaption>
+      </figure>
+  <p>La huella que ha dejado en nuestra cultura se descubre a través de los artículos que hablan de su amor a Valencia y de su espíritu altruista, que con el paso del tiempo se trasladan a los nuevos soportes de información.</p>
+  <blockquote>
+    <p>En conclusión, esa sencillez, ese amor a la humanidad, fue la herencia que recibió de su abuelo materno Antonio Bosca Soler, y fue la que él mismo nos legó.</p>
+  </blockquote>
+</section>
+
+
+<section id="glosario" class="content">
+  <span class="tag-didactico">Glosario</span>
+  <h2><span class="num">·</span> Términos para entender la época</h2>
+  <dl class="glosario">
+    <dt>Aparejador</dt>
+    <dd>Técnico de la construcción, hoy equivalente al actual arquitecto técnico, encargado de dirigir y supervisar obras y de realizar levantamientos y mediciones. Galiana ejerció esta profesión al servicio del catastro.</dd>
+    <dt>Catastro urbano</dt>
+    <dd>Registro administrativo que describe y valora los bienes inmuebles de un municipio. Los técnicos del catastro medían y documentaban gráficamente edificios y solares, lo que explica la habilidad de Galiana como dibujante técnico.</dd>
+    <dt>Sociedad Valenciana para el Fomento del Turismo (SVFT)</dt>
+    <dd>Entidad fundada en 1919 por iniciativa de particulares —entre ellos Manuel Feliu y el conde Trenor— para promocionar Valencia como destino turístico, en un momento en que el turismo aún no era gestionado por instituciones públicas.</dd>
+    <dt>Lo Rat Penat</dt>
+    <dd>Asociación cultural valenciana fundada en 1878 para la defensa y promoción de la lengua y la cultura valencianas, frecuentada por Galiana y por buena parte de la burguesía culta de la época.</dd>
+    <dt>Mecenazgo</dt>
+    <dd>Apoyo desinteresado a la conservación o creación artística y cultural, habitualmente mediante donaciones. Se diferencia del coleccionismo en que su finalidad última es poner el patrimonio al servicio de la comunidad.</dd>
+    <dt>Plano de reforma interior</dt>
+    <dd>Instrumento de planeamiento urbanístico, habitual desde finales del siglo XIX, destinado a reformar el trazado de una ciudad histórica (ensanchar calles, abrir plazas) inspirándose a menudo en modelos como la reforma de París del siglo XIX.</dd>
+  </dl>
+</section>
+
+
+<section id="aula" class="content alt">
+  <span class="tag-didactico">Recursos docentes</span>
+  <h2><span class="num">·</span> Para el aula</h2>
+  <p>Propuesta de actividades para trabajar esta biografía en clase de Historia de Valencia, individualmente o en grupo:</p>
+  <ol class="actividades">
+    <li><strong>Retrato de una época a través de una vida.</strong> Elabora una línea del tiempo personal que cruce los datos biográficos de Galiana con acontecimientos históricos generales de Valencia y España entre 1894 y 1966 (Dictadura de Primo de Rivera, República, Guerra Civil, primeros años del franquismo).</li>
+    <li><strong>Analizar una fuente primaria.</strong> Elige una de las imágenes del sitio (dibujo, postal o folleto) y describe qué información histórica puede extraerse de ella: ¿qué representa?, ¿quién y para qué la hizo?, ¿qué nos dice sobre la Valencia de su tiempo?</li>
+    <li><strong>Debate: patrimonio y desarrollo urbano.</strong> A partir de los proyectos de la Plaza de la Reina y la Glorieta, debatid en grupos: ¿debe una ciudad histórica transformar su trazado antiguo para modernizarse, o priorizar la conservación? Buscad ejemplos actuales similares en Valencia.</li>
+    <li><strong>De la "Ciudad de las flores" a hoy.</strong> Investigad la evolución de la promoción turística de Valencia desde 1929 hasta la actualidad (carteles, eslóganes, campañas). ¿Qué continuidades y qué rupturas encontráis?</li>
+    <li><strong>Microhistoria.</strong> Redactad un breve texto explicando qué aporta estudiar la vida de una persona "corriente" —ni artista consagrado ni político célebre— para comprender la historia de una ciudad.</li>
+  </ol>
+  <p style="margin-top:1.6rem;"><strong>Para saber más:</strong> este sitio se basa en «José E. Galiana Soler: una vida llena de amor a Valencia a través de su obra gráfica y literaria», de José Luis Galiana Puchades, y en fotografías, dibujos y postales del archivo familiar y de la colección de láminas de la Biblioteca Valenciana (ver referencia completa al pie de esta página).</p>
+</section>
+
+    <footer>
+      <p>Basado en «José E. Galiana Soler: una vida llena de amor a Valencia a través de su obra gráfica y literaria», por José Luis Galiana Puchades.</p>
+      <p>Fotografías, dibujos y postales procedentes del archivo familiar y de la colección de láminas de la Biblioteca Valenciana.</p>
+    </footer>
+  </main>
+</div>
+</body>
+</html>
